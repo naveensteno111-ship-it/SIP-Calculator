@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mutual Fund SIP Calculator</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.21.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>SIP Calculator</h1>
+        <p>Estimate the future value of your monthly investments.</p>
+      </header>
+      <main class="calculator">
+        <section class="controls" aria-label="Investment Controls">
+          <div class="control-group">
+            <div class="label-container">
+              <label for="monthly-investment">Monthly Investment</label>
+              <input type="number" id="monthly-investment-input" value="5000" min="500" max="100000" step="500" aria-labelledby="monthly-investment">
+            </div>
+            <input type="range" id="monthly-investment-slider" min="500" max="100000" step="500" value="5000" aria-label="Monthly Investment Slider">
+          </div>
+          <div class="control-group">
+            <div class="label-container">
+              <label for="return-rate">Expected Return Rate (% p.a.)</label>
+              <input type="number" id="return-rate-input" value="12" min="1" max="30" step="0.5" aria-labelledby="return-rate">
+            </div>
+            <input type="range" id="return-rate-slider" min="1" max="30" step="0.5" value="12" aria-label="Expected Return Rate Slider">
+          </div>
+          <div class="control-group">
+            <div class="label-container">
+              <label for="time-period">Time Period (Years)</label>
+              <input type="number" id="time-period-input" value="10" min="1" max="40" step="1" aria-labelledby="time-period">
+            </div>
+            <input type="range" id="time-period-slider" min="1" max="40" step="1" value="10" aria-label="Time Period Slider">
+          </div>
+          <button id="add-to-compare-btn" class="btn">Add to Compare</button>
+        </section>
+        <section class="results" aria-live="polite" aria-atomic="true">
+          <div class="chart-container">
+            <div id="donut-chart" role="img" aria-label="Chart showing breakdown of invested amount and estimated returns">
+              <div class="chart-center">
+                <span class="chart-label">Total Value</span>
+                <span id="total-value" class="chart-amount">₹0</span>
+              </div>
+            </div>
+          </div>
+          <div class="results-summary">
+            <div class="summary-item">
+              <span class="legend-dot invested"></span>
+              <p>Invested Amount</p>
+              <strong id="invested-amount">₹0</strong>
+            </div>
+            <div class="summary-item">
+              <span class="legend-dot returns"></span>
+              <p>Est. Returns</p>
+              <strong id="estimated-returns">₹0</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+      <section id="comparison-section" class="comparison" aria-label="Comparison of Funds">
+        <h2>Comparison</h2>
+        <div id="comparison-list"></div>
+      </section>
+    </div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>

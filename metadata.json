@@ -1,0 +1,5 @@
+{
+  "name": "Mutual Fund SIP Calculator",
+  "description": "A tool to calculate the future value of Systematic Investment Plans (SIP).",
+  "requestFramePermissions": []
+}
